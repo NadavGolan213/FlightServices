@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Flight Market
+{% endblock %}
+
+
+
+
+
+{% block content %}
+    <div style="margin: 25px; ">
+        <center>
+            <h2 >find your flight now : </h2>    
+        </center>
+         
+        <center>
+            <section>
+                <form action="#" method="post" name="signup_form">
+                    <input type="text" name="origin" placeholder="✈️ where from: ">
+                    <input type="text" name="destination" placeholder="🌍 destination: ">
+                    <input type="date" name="flightdate">
+                    <select name="ticketsnum">
+                        <option value="1">👥 1</option>
+                        <option value="2">👥 2</option>
+                        <option value="3">👥 3</option>
+                        <option value="4">👥 4</option>
+                        <option value="5">👥 5</option>
+                        <option value="6">👥 6</option>
+                    </select>
+                    <input id="submitbtn" type="submit" value="submit" class="btn">
+                </form>
+            </section>
+            
+            <div class="parent">
+                {% for flight in objectFlightList %}
+                <div class="item">
+
+                    <div class="flightshow">
+                        <img class="flightinfo" width="250"; style="position:relative; aspect-ratio: 1; object-fit: fill;  border-radius:10px 10px 10px 10px;" src="{{ flight.origin[2] }}" alt="origin photo" />
+                        <div class="flightinfo" style="width: 200px;" >
+                            <label> <h2>origin</h2> </label>
+                            <br>
+                            <label>{{ flight.origin[0] }}, {{ flight.origin[1] }}</label>    
+                        </div>
+                        
+                    </div>
+
+                    <div class="flightshow center">
+                        <img width="150"; style="position:relative;" src="https://www.pngmart.com/files/15/Arrow-PNG-Clipart.png" alt="origin photo" />
+                        <br><br>
+                        <label>Flight Date: {{ flight.FlightDate }}</label>
+                        <br>
+                        <label>Ariving Date: {{ flight.ArivingDate }}</label>
+                    </div>
+
+                    <div class="flightshow">
+                        <img class="flightinfo" width="250"; style="position:relative; aspect-ratio: 1;  border-radius:10px 10px 10px 10px;" src="{{ flight.destinations[2] }}" alt="origin photo" />
+                        <div class="flightinfo" style="width: 200px;">
+                            <label > <h2>destination</h2> </label>
+                            <br>
+                            <label >{{ flight.destinations[0] }}, {{ flight.destinations[1] }}</label>    
+                        </div>
+                    </div>
+                    <br><br>
+                    <label style="transform: translateX(-600px) ;">price: {{ flight.price }}$</label>
+
+                    <br><br><br>
+                    <input id="submitbtn" type="submit" value="more info" class="btn">
+
+                </div>
+                {% endfor %}
+            </div>
+        </center> 
+        
+    </div>
+
+
+
+
+    <style>
+        section{
+            padding: 5px 10px;
+            background-color:rgba(47, 79, 79, 50%);
+            max-width: fit-content;
+
+        }
+        select{
+            padding: 10px;
+            border: none;
+            outline: none
+        }
+        input{
+           padding: 10px;
+           border: none;
+           outline: none;
+        }
+    
+        #submitbtn{
+            color: white;
+            padding: 10px;
+            border: none;
+            outline: none;
+            background-color: cadetblue;
+        }
+
+        .flightshow{
+            display: inline-block;
+            padding-left: 40px;
+            padding-right: 40px;
+            
+        }
+        .flightshow.center{
+            
+            transform: translateY(50%);
+        }
+        .item{
+            display: block;
+            background-color: rgba(4, 41, 64, 50%);
+            margin-bottom: 20px;
+            margin-top: 20px;
+            width: fit-content;
+            padding: 10px;
+        }
+        .flightinfo{
+            display: inline-block;
+            padding-right: 10px;
+
+        }
+        
+    </style>
+    
+{% endblock %}
